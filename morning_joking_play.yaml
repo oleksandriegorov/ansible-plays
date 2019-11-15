@@ -1,0 +1,35 @@
+---
+- name: Early morning play
+   hosts: all
+   vars:
+     - username: alex
+     - mood: decisive
+   vars_file:
+     - vars/skills.yml
+   tasks:
+     - name: Standalone task
+        debug:
+          msg: “Good morning {{ username }}”   
+     block:
+       - name: Wakeup
+          service:
+            state: running
+            name: wakeup
+          service:
+            state: started
+            name: workout
+     rescue:
+       - name: Drink tea
+          service:
+            state: running
+            name: teacup
+     always:
+       - name: Say hi to family
+          service:
+            state: running
+            name: greeting
+          service:
+            state: running
+            name: smiling
+          debug:
+            msg: “Now, {{ username }}, you are in {{ mood }} for the day” 
