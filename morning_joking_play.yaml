@@ -9,7 +9,7 @@
    tasks:
      - name: Standalone task
         debug:
-          msg: “Good morning {{ username }}”   
+          msg: "Good morning {{ username }}"
      block:
        - name: Wakeup
           service:
@@ -32,4 +32,4 @@
             state: running
             name: smiling
           debug:
-            msg: “Now, {{ username }}, you are in {{ mood }} for the day” 
+            msg: "Now, {{ username }}, you are in {{ mood }} for the day"
